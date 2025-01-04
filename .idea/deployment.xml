@@ -12,7 +12,7 @@
       <paths name="root@region-9.autodl.pro:29369">
         <serverdata>
           <mappings>
-            <mapping deploy="/root/autodl-tmp/ai_model_finetune" local="$PROJECT_DIR$" />
+            <mapping deploy="/" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
