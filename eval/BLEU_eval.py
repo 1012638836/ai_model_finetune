@@ -50,9 +50,9 @@ def main(n = 100):
         question, answer = row['rewrite'], row['answer']
         llms_result = send_request(llms_input=question)
         bleu_score = bleu_cal(answer, llms_result)
-        data_df_list.append([question, llms_result, bleu_score])
-        print(f'{index} is done! {question} -{llms_result} - {bleu_score}')
-    data_df = pd.DataFrame(data_df_list, columns = ['question', 'llms_result', 'bleu_score'])
+        data_df_list.append([question, answer, llms_result, bleu_score])
+        print(f'{index} is done! {question} - {answer} -{llms_result} - {bleu_score}')
+    data_df = pd.DataFrame(data_df_list, columns = ['question', 'answer', 'llms_result', 'bleu_score'])
     data_df.to_csv('../data/评测结果_bleu_score.csv', index = False, encoding = 'utf-8-sig')
 
 if __name__ == '__main__':
