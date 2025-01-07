@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="root@region-9.autodl.pro:29369" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@connect.bjc1.seetacloud.com:51882" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="ai_model_finetune">
         <serverdata>
@@ -9,10 +9,10 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="root@region-9.autodl.pro:29369">
+      <paths name="root@connect.bjc1.seetacloud.com:51882">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" />
+            <mapping deploy="/root/autodl-tmp/ai_model_finetune" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

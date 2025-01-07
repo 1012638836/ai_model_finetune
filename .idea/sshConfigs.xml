@@ -2,7 +2,12 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="region-9.autodl.pro" id="13ab61ae-d5de-4314-bb17-98b15f43b99c" port="29369" nameFormat="DESCRIPTIVE" username="root" />
+      <sshConfig authType="PASSWORD" host="connect.bjc1.seetacloud.com" id="13ab61ae-d5de-4314-bb17-98b15f43b99c" port="51882" customName="L20" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="L20" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="region-9.autodl.pro" id="043a1e28-110d-4338-9218-6f69cffbc630" port="38622" customName="A100" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="A100" />
+      </sshConfig>
     </configs>
   </component>
 </project>

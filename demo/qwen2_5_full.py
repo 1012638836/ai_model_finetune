@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+# @Time : 2025/1/7 14:35
+# @Author : lijinze
+# @Email : lijinze@lzzg365.cn
+# @File : qwen2_5_full.py
+# @Project : ai_model_finetune
+# -*- coding: utf-8 -*-
 # @Time : 2025/1/2 22:31
 # @Author : lijinze
 # @Email : lijinze@lzzg365.cn
@@ -36,29 +42,29 @@ def setup_wandb(project_name: str, run_name: str):
     except Exception as e:
         print(f"Error initializing WandB run: {e}")
 
-setup_wandb(project_name = 'qwen2.5-7b-instruct', run_name='20250107-14_40')
+setup_wandb(project_name = 'qwen2.5-7b-instruct', run_name='20250107-14_40_full')
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = "/root/autodl-tmp/qwen/Qwen/Qwen2___5-7B-Instruct",
     max_seq_length = max_seq_length,
     dtype = dtype,
-    load_in_4bit = load_in_4bit,
+    # load_in_4bit = load_in_4bit,
 )
 
-model = FastLanguageModel.get_peft_model(
-    model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
-                      "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 16,
-    lora_dropout = 0, # Supports any, but = 0 is optimized
-    bias = "none",    # Supports any, but = "none" is optimized
-    # [NEW] "unsloth" uses 30% less VRAM, fits 2x larger batch sizes!
-    use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
-    random_state = 3407,
-    use_rslora = False,  # We support rank stabilized LoRA
-    loftq_config = None, # And LoftQ
-)
+# model = FastLanguageModel.get_peft_model(
+#     model,
+#     r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+#     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
+#                       "gate_proj", "up_proj", "down_proj",],
+#     lora_alpha = 16,
+#     lora_dropout = 0, # Supports any, but = 0 is optimized
+#     bias = "none",    # Supports any, but = "none" is optimized
+#     # [NEW] "unsloth" uses 30% less VRAM, fits 2x larger batch sizes!
+#     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
+#     random_state = 3407,
+#     use_rslora = False,  # We support rank stabilized LoRA
+#     loftq_config = None, # And LoftQ
+# )
 
 alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
@@ -125,9 +131,9 @@ trainer_stats = trainer.train()
 
 wandb.finish()
 
-# Local saving
-model.save_pretrained(LORA_MODEL_NAME)
-tokenizer.save_pretrained(LORA_MODEL_NAME)
+# # Local saving
+# model.save_pretrained(LORA_MODEL_NAME)
+# tokenizer.save_pretrained(LORA_MODEL_NAME)
 
 # Merge to 16bit
 model.save_pretrained_merged(FULL_MODEL_NAME, tokenizer, save_method = "merged_16bit",)

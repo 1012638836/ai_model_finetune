@@ -29,9 +29,15 @@ You are a helpful assistant.
 ``ollama create qwen2_13b_gguf -f Modelfile``
 
 #### 基于litellm部署http服务
-``conda activate llama``
+``conda activate ai_qiniu_chatbot``
 ``litellm --model ollama/qwen2_13b_gguf``
 
 - litellm会分配端口，默认端口为4000
 - curl http://localhost:4000/v1/chat/completions   -H "Content-Type: application/json"   -d '{"model": "qwen2_13b_gguf", "messages": [{"role": "user", "content": "Hello! What is your name?"}]}'
 
+#### llama环境配置
+``conda create -n llama python=3.10.0``
+``cd llama.cpp & pip install -r requirements.txt``
+
+#### litellm环境配置
+``pip install litellm[proxy]``
